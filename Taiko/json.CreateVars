@@ -17,7 +17,7 @@
  * MODIFIED on 2024-09-16 by Marcelo Piñeyro <mpineyro@soliantconsulting.com> - changed name from #Json.CreateVarsFromKeys to #Json.CreateVarsPrivate, so it's clear that this is one of the private functions in the clew suite of custom functions
 * MODIFIED on 2024-10-21 by Marcelo Piñeyro <mpineyro@soliantconsulting.com> - changed name from #Json.CreateVarsPrivate to #Json.CreateVars
 * MODIFIED on 2024-11-06 by Marcelo Piñeyro - replaced "#Json." prefix with "json." in the function's name
-* MODIFIED on 2025-12-16 by roberto@taikosolutions.com - Cambiada comprobación de date para que no recoja como date textos que se parezcan a fechas.
+* MODIFIED on 2025-12-16  by roberto@taikosolutions.com - Cambiada comprobación de date para que no recoja como date textos que se parezcan a fechas.
  *
  * @PURPOSE:
  * Create local variables for all keys belonging to the JSON document's root node.
