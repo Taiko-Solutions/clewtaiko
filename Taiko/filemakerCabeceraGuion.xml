@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmxmlsnippet type="FMObjectList">
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>=====================================================================================</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>Propósito: Script para la comprobación de facturas en cola</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>Contexto: insensible</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>Nota: Comprobación de la cola de facturas a enviar a wortice con estado 0.</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>-------------------------------------------------------------------------------------</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>PARÁMETROS REQUERIDOS</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>NINGUNO</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>-------------------------------------------------------------------------------------</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>PARÁMETROS OPCIONALES</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>NINGUNO</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)"/>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>-------------------------------------------------------------------------------------</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>DEVUELVE</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>-------------------------------------------------------------------------------------</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>HISTORIAL</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>	2025-10-23 Roberto: Creación</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)">
+    <Text>=====================================================================================</Text>
+  </Step>
+  <Step enable="True" id="89" name="# (comment)"/>
+  <Step enable="True" id="89" name="# (comment)"/>
+  <Step enable="True" id="85" name="Allow User Abort">
+    <Set state="False"/>
+  </Step>
+  <Step enable="True" id="86" name="Set Error Capture">
+    <Set state="True"/>
+  </Step>
+</fmxmlsnippet>

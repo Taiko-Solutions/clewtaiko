@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmxmlsnippet type="FMObjectList">
+  <BaseTable comment="" name="NombreTabla">
+    <Field id="7" dataType="Number" fieldType="Normal" name="z_xJoin">
+      <Comment/>
+      <AutoEnter allowEditing="True" constant="False" furigana="False" lookup="False" calculation="False">
+        <ConstantData/>
+        <Calculation table="NombreTabla"><![CDATA[1]]></Calculation>
+      </AutoEnter>
+      <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+        <NotEmpty value="False"/>
+        <Unique value="False"/>
+        <Existing value="False"/>
+        <StrictValidation value="False"/>
+      </Validation>
+      <Storage indexLanguage="Spanish" global="True" maxRepetition="1"/>
+    </Field>
+    <Field id="8" dataType="Number" fieldType="Calculated" name="zc_TRUE">
+      <Calculation table="NombreTabla"><![CDATA[1]]></Calculation>
+      <Comment/>
+      <AutoEnter alwaysEvaluate="False"/>
+      <Storage indexLanguage="Spanish" global="True" maxRepetition="1"/>
+    </Field>
+    <Field id="9" dataType="Text" fieldType="Normal" name="zz__CuentaCreacion__lxt">
+      <Comment/>
+      <AutoEnter allowEditing="True" value="CreationAccountName" constant="False" furigana="False" lookup="False" calculation="False">
+        <ConstantData/>
+      </AutoEnter>
+      <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+        <NotEmpty value="False"/>
+        <Unique value="False"/>
+        <Existing value="False"/>
+        <StrictValidation value="False"/>
+      </Validation>
+      <Storage index="All" indexLanguage="Spanish" global="False" maxRepetition="1"/>
+    </Field>
+    <Field id="10" dataType="Text" fieldType="Normal" name="zz__CuentaModificacion__lxt">
+      <Comment/>
+      <AutoEnter allowEditing="True" value="ModificationAccountName" constant="False" furigana="False" lookup="False" calculation="False">
+        <ConstantData/>
+      </AutoEnter>
+      <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+        <NotEmpty value="False"/>
+        <Unique value="False"/>
+        <Existing value="False"/>
+        <StrictValidation value="False"/>
+      </Validation>
+      <Storage index="All" indexLanguage="Spanish" global="False" maxRepetition="1"/>
+    </Field>
+    <Field id="11" dataType="TimeStamp" fieldType="Normal" name="zz__fecha_de_creacion__lxm">
+      <Comment/>
+      <AutoEnter allowEditing="True" value="CreationTimeStamp" constant="False" furigana="False" lookup="False" calculation="False">
+        <ConstantData/>
+      </AutoEnter>
+      <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+        <NotEmpty value="False"/>
+        <Unique value="False"/>
+        <Existing value="False"/>
+        <StrictValidation value="False"/>
+      </Validation>
+      <Storage index="All" indexLanguage="Spanish" global="False" maxRepetition="1"/>
+    </Field>
+    <Field id="12" dataType="TimeStamp" fieldType="Normal" name="zz__fecha_de_modificacion__lxm">
+      <Comment/>
+      <AutoEnter allowEditing="True" value="ModificationTimeStamp" constant="False" furigana="False" lookup="False" calculation="False">
+        <ConstantData/>
+      </AutoEnter>
+      <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+        <NotEmpty value="False"/>
+        <Unique value="False"/>
+        <Existing value="False"/>
+        <StrictValidation value="False"/>
+      </Validation>
+      <Storage index="All" indexLanguage="Spanish" global="False" maxRepetition="1"/>
+    </Field>
+    <Field id="17" dataType="Text" fieldType="Normal" name="zz__RecordID__lxt">
+      <Comment/>
+      <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="True">
+        <ConstantData/>
+        <Calculation table="NombreTabla"><![CDATA[Get ( RecordID )]]></Calculation>
+      </AutoEnter>
+      <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+        <NotEmpty value="False"/>
+        <Unique value="False"/>
+        <Existing value="False"/>
+        <StrictValidation value="False"/>
+      </Validation>
+      <Storage index="All" indexLanguage="Spanish" global="False" maxRepetition="1"/>
+    </Field>
+    <Field id="18" dataType="Text" fieldType="Normal" name="__kplt__Table">
+      <Comment/>
+      <AutoEnter allowEditing="False" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="True">
+        <ConstantData/>
+        <Calculation table="NombreTabla"><![CDATA[Get ( UUID )]]></Calculation>
+      </AutoEnter>
+      <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+        <NotEmpty value="False"/>
+        <Unique value="False"/>
+        <Existing value="False"/>
+        <StrictValidation value="False"/>
+      </Validation>
+      <Storage autoIndex="True" index="None" indexLanguage="Spanish" global="False" maxRepetition="1"/>
+    </Field>
+  </BaseTable>
+</fmxmlsnippet>
