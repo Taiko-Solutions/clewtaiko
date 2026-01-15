@@ -2,64 +2,64 @@
 <fmxmlsnippet type="FMObjectList">
   <CustomFunction id="73" functionArity="2" visible="True" parameters="json;namespace" name="json.CreateVars">
     <Calculation><![CDATA[/**
- * @SIGNATURE:
+ * @FIRMA:
  * json.CreateVars ( json ; namespace )
  *
- * @PARAMETERS:
- * json - JSON data
- * namespace - Prefix for the variables that are to be created; can be left blank
+ * @PARÁMETROS:
+ * json - Datos JSON
+ * namespace - Prefijo para las variables que serán creadas; puede dejarse en blanco
  *
- * @HISTORY:
- * CREATED on 2017-12-08 by Mislav Kos <mkos@soliantconsulting.com>
- * MODIFIED on 2018-02-18 by Mislav Kos <mkos@soliantconsulting.com> - corrected typecasting portion of the custom function
- * MODIFIED on 2018-04-01 by Bob Bowers <bbowers@soliantconsulting.com> - allow for specifying global rather than local variables with an asterisk prefix for the json element
- * MODIFIED on 2021-03-28 by Marcelo Piñeyro <mpineyro@soliantconsulting.com> - return error _ERROR_INVALID_PARAM when the parameter can't be parsed
- * MODIFIED on 2024-09-16 by Marcelo Piñeyro <mpineyro@soliantconsulting.com> - changed name from #Json.CreateVarsFromKeys to #Json.CreateVarsPrivate, so it's clear that this is one of the private functions in the clew suite of custom functions
-* MODIFIED on 2024-10-21 by Marcelo Piñeyro <mpineyro@soliantconsulting.com> - changed name from #Json.CreateVarsPrivate to #Json.CreateVars
-* MODIFIED on 2024-11-06 by Marcelo Piñeyro - replaced "#Json." prefix with "json." in the function's name
-* MODIFIED on 2025-12-16  by roberto@taikosolutions.com - Cambiada comprobación de date para que no recoja como date textos que se parezcan a fechas.
+ * @HISTORIAL:
+ * CREADO el 2017-12-08 por Mislav Kos <mkos@soliantconsulting.com>
+ * MODIFICADO el 2018-02-18 por Mislav Kos <mkos@soliantconsulting.com> - corregida la porción de conversión de tipos de la función personalizada
+ * MODIFICADO el 2018-04-01 por Bob Bowers <bbowers@soliantconsulting.com> - permite especificar variables globales en lugar de locales con un prefijo de asterisco para el elemento json
+ * MODIFICADO el 2021-03-28 por Marcelo Piñeyro <mpineyro@soliantconsulting.com> - devuelve error _ERROR_INVALID_PARAM cuando el parámetro no puede ser analizado
+ * MODIFICADO el 2024-09-16 por Marcelo Piñeyro <mpineyro@soliantconsulting.com> - cambiado el nombre de #Json.CreateVarsFromKeys a #Json.CreateVarsPrivate, para que quede claro que esta es una de las funciones privadas en el conjunto de funciones personalizadas de clew
+* MODIFICADO el 2024-10-21 por Marcelo Piñeyro <mpineyro@soliantconsulting.com> - cambiado el nombre de #Json.CreateVarsPrivate a #Json.CreateVars
+* MODIFICADO el 2024-11-06 por Marcelo Piñeyro - reemplazado el prefijo "#Json." con "json." en el nombre de la función
+* MODIFICADO el 2025-12-16 por roberto@taikosolutions.com - Cambiada comprobación de date para que no recoja como date textos que se parezcan a fechas.
  *
- * @PURPOSE:
- * Create local variables for all keys belonging to the JSON document's root node.
- * For example, given the following JSON, this custom function will create $id and $color variables: { "id" : "123", "color" : "blue" }
+ * @PROPÓSITO:
+ * Crear variables locales para todas las claves que pertenecen al nodo raíz del documento JSON.
+ * Por ejemplo, dado el siguiente JSON, esta función personalizada creará las variables $id y $color: { "id" : "123", "color" : "blue" }
  *
- * @RESULT:
- * This custom function will return an error code as a result.
- * 0 means success or empty JSON.
- * _Error_INVALID_PARAM means invalid json
- * 1204 means one of the JSON root keys did not conform to the FileMaker naming restrictions for variable and fields.
- * Pre-16 clients will return "?".
+ * @RESULTADO:
+ * Esta función personalizada devolverá un código de error como resultado.
+ * 0 significa éxito o JSON vacío.
+ * _Error_INVALID_PARAM significa json inválido
+ * 1204 significa que una de las claves raíz del JSON no cumplió con las restricciones de nomenclatura de FileMaker para variables y campos.
+ * Los clientes pre-16 devolverán "?".
  *
- * @ERRORS:
- * Errors will be indicated in the custom function result using standard FileMaker error codes: https://fmhelp.filemaker.com/help/16/fmp/en/#page/FMP_Help%2Ferror-codes.html.
+ * @ERRORES:
+ * Los errores se indicarán en el resultado de la función personalizada usando los códigos de error estándar de FileMaker: https://fmhelp.filemaker.com/help/16/fmp/en/#page/FMP_Help%2Ferror-codes.html.
  *
- * @NOTES:
- * Keys must be named following the same naming restrictions as FileMaker variables and fields: https://fmhelp.filemaker.com/help/16/fmp/en/index.html#page/FMP_Help%2Fnaming-fields.html.
- * 
- * @DEPENDENCIES:
- * Does not require any other custom functions. Requires v16 or later client. Pre-16 clients will return "?".
+ * @NOTAS:
+ * Las claves deben ser nombradas siguiendo las mismas restricciones de nomenclatura que las variables y campos de FileMaker: https://fmhelp.filemaker.com/help/16/fmp/en/index.html#page/FMP_Help%2Fnaming-fields.html.
+ *
+ * @DEPENDENCIAS:
+ * No requiere ninguna otra función personalizada. Requiere cliente v16 o posterior. Los clientes pre-16 devolverán "?".
  */
 
-Case ( 
-	IsEmpty ( json ) ; 0 ; // If JSON is empty, return 0 ("no error")
+Case (
+	IsEmpty ( json ) ; 0 ; // Si el JSON está vacío, devolver 0 ("sin error")
 	
 	Left ( JSONFormatElements ( json ) ; 1 ) = "?" ; _error_INVALID_PARAM ;
 	
-	Let ( [ 
-		~keys = JSONListKeys ( json ; "." ) ; // Get keys from JSON document's root node
-		~key = GetValue ( ~keys ; ValueCount ( ~keys ) ) // Process keys starting with the last one; otherwise JSON arrays won't process correctly
+	Let ( [
+		~keys = JSONListKeys ( json ; "." ) ; // Obtener claves del nodo raíz del documento JSON
+		~key = GetValue ( ~keys ; ValueCount ( ~keys ) ) // Procesar claves comenzando con la última; de lo contrario los arrays JSON no se procesarán correctamente
 	] ; 
-		If ( 
-			IsEmpty ( ~key ) ; 0 ; // If the JSON document's root node doesn't contain any keys, return 0 ("no error")
-			
-			// Create variable based on key, then delete key from JSON, and then recursively call CF again to process remaining keys
-			Let ( [ 
-				// Get value for key
-				~value = JSONGetElement ( json ; ~key ) ; 
-				
-				// Ensure correct typecasting of value; without this, everything would get typecast as text
-				// This next section was taken from the the # custom function and (I think) was written by Daniel Smith (github.com/dansmith65) and Jeremy Bante (github.com/jbante)
-				// See https://github.com/filemakerstandards/fmpstandards/blob/master/Functions/%23Name-Value/%23.fmfn
+		If (
+			IsEmpty ( ~key ) ; 0 ; // Si el nodo raíz del documento JSON no contiene ninguna clave, devolver 0 ("sin error")
+
+			// Crear variable basada en la clave, luego eliminar la clave del JSON, y luego llamar recursivamente a la CF nuevamente para procesar las claves restantes
+			Let ( [
+				// Obtener valor para la clave
+				~value = JSONGetElement ( json ; ~key ) ;
+
+				// Asegurar la conversión de tipos correcta del valor; sin esto, todo se convertiría a texto
+				// Esta siguiente sección fue tomada de la función personalizada # y (creo) fue escrita por Daniel Smith (github.com/dansmith65) y Jeremy Bante (github.com/jbante)
+				// Ver https://github.com/filemakerstandards/fmpstandards/blob/master/Functions/%23Name-Value/%23.fmfn
 				~text = GetAsText ( ~value ) ; 
 				~number = GetAsNumber ( ~value ) ; 
 				~validDate = IsValid ( GetAsDate ( ~text ) ) and not IsEmpty ( ~number )  and GetAsDate ( ~text )  = ~text ; 
@@ -73,18 +73,18 @@ Case (
 					~number
 				) ; 
 
-				
-				// Create variable based on key and value (and namespace)
 
-                                ~newKey = Substitute ( ~key ; "*" ; "$" ) ;  // allows for specifying global variables by beginning key with asterisk
+				// Crear variable basada en la clave y el valor (y namespace)
+
+                                ~newKey = Substitute ( ~key ; "*" ; "$" ) ;  // permite especificar variables globales comenzando la clave con asterisco
 
 				~error = EvaluationError ( Evaluate ( "Let ( $" & namespace & ~newKey & " = " & ~value & " ; \"\" ) " ) ) 
-			] ; 
-				If ( 
-					~error ≠ 0 ; ~error ; // If we encountered an error, return the error code and don't bother processing the rest of the keys
-					Let ( 
-						json = JSONDeleteElement ( json ; ~key ) ; // Delete key from JSON
-						json.CreateVars ( json ; namespace ) // Recursively call custom function to process remaining keys
+			] ;
+				If (
+					~error ≠ 0 ; ~error ; // Si se encuentra un error, devolver el código de error y no procesar el resto de las claves
+					Let (
+						json = JSONDeleteElement ( json ; ~key ) ; // Eliminar clave del JSON
+						json.CreateVars ( json ; namespace ) // Llamar recursivamente a la función personalizada para procesar las claves restantes
 					)
 				)
 			)
